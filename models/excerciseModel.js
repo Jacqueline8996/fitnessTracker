@@ -3,35 +3,50 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ExcersiseSchema = new Schema({
-  username: {
-    type: String,
-    trim: true,
-    required: "Username is Required"
-  },
-
-  password: {
-    type: String,
-    trim: true,
-    required: "Password is Required",
-    validate: [({ length }) => length >= 6, "Password should be longer."]
-  },
-
-  email: {
-    type: String,
-    unique: true,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-  },
-
-  userCreated: {
+  day: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
+  exercises: [
+    {
+    workType: {
+      type: String,
+      trim: true,
+      require:true
+    },
+    name:{
+      type: String,
+      trim: true,
+      required: true,
+    },
+    distance: {
+      type: Number,
+      default: 0,
+    },
+    duration: {
+      type: Number,
+      default: 0
+    },
+    weight: {
+      type: Number,
+      default: 0
+    },
+    sets: {
+      type: Number,
+      default: 0
+    },
+    reps: {
+      type: Number,
+      default: 0
+    },
+    duration: {
+    type: Number,
+    default: 0,
+    } ,
+  },
+  ],
 
-  isCool: {
-    type: Boolean,
-    default: false
-  }
-});
+}); 
 
 
 const Excercise = mongoose.model("excercise", ExcersiseSchema);
