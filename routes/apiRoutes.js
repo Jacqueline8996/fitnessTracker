@@ -1,60 +1,29 @@
 //require the old data
-var mynotes = require("../db/db.json");
-//connects to the the database
-var dataBase ='./db/db.json';
-const fs =require("fs");
-let oldNote = fs.readFileSync(dataBase);
+var db = require("../models");
 
-//makes unique ID 
-function makeID(){
-  //paramater needed in order to create a ID
-  let alpha = ["AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"];
-  let number =["0123456789"];
-  let alphaNum = [alpha,number];
-  let id = ""
-  //creates an 8 digit number 
-  for (i = 0; i < 8; i++) {
-    let ranAlphaNum = Math.floor(Math.random() * 2)
-    let ranAlpha = Math.floor(Math.random() * 51)
-    let ranNum = Math.floor(Math.random() * 9)
-    let choice = alphaNum[ranAlphaNum]
 
-    if (choice === alphaNum[0]){
-       let digit = choice[0][ranAlpha]
-       id += digit
-    }else{
-      let digit = choice[0][ranNum]
-      id += digit
-    }
-  }
-  return id 
-};
 
 module.exports = function(app) {
   
     // get request for the notes that have been stored
-    app.get("/api/notes", function(req, res) {
-      let oldNotes = fs.readFileSync(dataBase);
-      //get old notes 
-      // let oldNote = fs.readFileSync(dataBase)
-      res.json(JSON.parse(oldNotes));
+    app.get("/api/workouts", function(req, res) => {
+      db.Workout.find()
+      .then((workouts)=>{
+        res.json(workouts);
+      })
+      .catch((err) => {
+        console.log("error == ", err);
+      });
+
     });
+  
   
     // post notes 
   
-    app.post("/api/notes", function(req, res) {
-      //  let pastNote = fs.readFileSync(JSON.stringify(mynotes))
-      let parseNote = JSON.parse(fs.readFileSync(dataBase));
-      //stores the notes in an object 
-      //adds in title to the object based on what was entered 
-      //adds in title to the object based on what was entered 
-      //gives note a unique number from make ID 
-      let addNotes = {
-        title:req.body.title,
-        text:req.body.text,
-        id: makeID() 
-      };
+    app.post("/api/workouts/", function(req, res) {
+      db.Workout.crea
 
+      });
       // let pastNote = fs.readFileSync(mynotes)
       parseNote.push(addNotes);
       console.log("my database", parseNote);
