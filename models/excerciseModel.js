@@ -9,7 +9,7 @@ const ExcersiseSchema = new Schema({
   },
   exercises: [
     {
-    workType: {
+    type: {
       type: String,
       trim: true,
       require:true
@@ -42,13 +42,13 @@ const ExcersiseSchema = new Schema({
     duration: {
     type: Number,
     default: 0,
-    } ,
+    },
   },
   ],
 
 }); 
 
 
-const Excercise = mongoose.model("excercise", ExcersiseSchema);
+const Excercise = mongoose.model("Excercise", ExcersiseSchema);
 
 module.exports = Excercise;
