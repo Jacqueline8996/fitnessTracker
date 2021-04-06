@@ -12,7 +12,8 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 
 //establishes the mongoose connection and to work outs and to the server
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", 
+{ useNewUrlParser: true,useUnifiedTopology: true, useCreateIndex: true,useFindAndModify: false});
 
 
 
