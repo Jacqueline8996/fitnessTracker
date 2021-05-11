@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const ExcersiseSchema = new Schema({
@@ -38,10 +37,6 @@ const ExcersiseSchema = new Schema({
     reps: {
       type: Number,
       default: 0
-    },
-    duration: {
-    type: Number,
-    default: 0,
     },
   },
   ],

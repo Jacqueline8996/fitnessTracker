@@ -3,8 +3,6 @@
 const path = require("path");
 
 
-
-
 module.exports = function(app) {
 
     //gets the html Pages
