@@ -30,7 +30,7 @@ module.exports = (app) =>{
     });
 
     //uppdate
-    app.put("/api/workouts/", function(req, res) {
+    app.put("/api/workouts/:id", function(req, res) {
       db.Workout.create(req.body)
       .then((workouts) => {
         res.json(workouts);
