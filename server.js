@@ -7,6 +7,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.static('files'))
+app.use('/css',express.static( 'public/css'));
+app.use('/js',express.static( 'public/js'));
+
 
 // morgan is a middleware log that logs details about requests/responses
 app.use(logger("dev"));
