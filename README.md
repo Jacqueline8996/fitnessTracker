@@ -24,10 +24,9 @@
 
 # PageImages 
 * Images of the main app
-![alt text]()
+![alt text](public/images/graph.png)
 
-* Image on of the app doing a search for Rosa
-![alt text]()
+
 
 
 # ProjectContributors
